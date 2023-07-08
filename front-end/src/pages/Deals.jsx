@@ -1,7 +1,13 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Deals = () => {
+  const navigate = useNavigate();
   const [deals, setDeals] = useState([]);
+
+  const handleAddDeal = () => {
+    navigate("/deals/add");
+  };
 
   useEffect(() => {
     fetch("http://localhost:5000/deals")
@@ -12,6 +18,7 @@ const Deals = () => {
   return (
     <>
       <h1>Deals</h1>
+      <button onClick={handleAddDeal}>Add deal</button>
       <table>
         <thead>
           <tr>

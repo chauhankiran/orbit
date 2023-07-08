@@ -1,7 +1,13 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Tasks = () => {
+  const navigate = useNavigate();
   const [tasks, setTasks] = useState([]);
+
+  const handleAddTask = () => {
+    navigate("/tasks/add");
+  };
 
   useEffect(() => {
     fetch("http://localhost:5000/tasks")
@@ -12,6 +18,7 @@ const Tasks = () => {
   return (
     <>
       <h1>Tasks</h1>
+      <button onClick={handleAddTask}>Add task</button>
       <table>
         <thead>
           <tr>

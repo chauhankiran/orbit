@@ -1,7 +1,13 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Quotes = () => {
+  const navigate = useNavigate();
   const [quotes, setQuotes] = useState([]);
+
+  const handleAddQuote = () => {
+    navigate("/quotes/add");
+  };
 
   useEffect(() => {
     fetch("http://localhost:5000/quotes")
@@ -12,6 +18,7 @@ const Quotes = () => {
   return (
     <>
       <h1>Quotes</h1>
+      <button onClick={handleAddQuote}>Add quote</button>
       <table>
         <thead>
           <tr>

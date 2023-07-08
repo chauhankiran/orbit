@@ -1,7 +1,13 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Contacts = () => {
+  const navigate = useNavigate();
   const [contacts, setContacts] = useState([]);
+
+  const handleAddContact = () => {
+    navigate("/contacts/add");
+  };
 
   useEffect(() => {
     fetch("http://localhost:5000/contacts")
@@ -12,6 +18,7 @@ const Contacts = () => {
   return (
     <>
       <h1>Contacts</h1>
+      <button onClick={handleAddContact}>Add contact</button>
       <table>
         <thead>
           <tr>

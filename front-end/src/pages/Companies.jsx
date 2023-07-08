@@ -1,7 +1,13 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Companies = () => {
+  const navigate = useNavigate();
   const [companies, setCompanies] = useState([]);
+
+  const handleAddCompany = () => {
+    navigate("/companies/add");
+  };
 
   useEffect(() => {
     fetch("http://localhost:5000/companies")
@@ -12,6 +18,7 @@ const Companies = () => {
   return (
     <>
       <h1>Companies</h1>
+      <button onClick={handleAddCompany}>Add company</button>
       <table>
         <thead>
           <tr>
