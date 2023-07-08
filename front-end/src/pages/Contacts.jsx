@@ -1,4 +1,14 @@
+import { useEffect, useState } from "react";
+
 const Contacts = () => {
+  const [contacts, setContacts] = useState([]);
+
+  useEffect(() => {
+    fetch("http://localhost:5000/contacts")
+      .then((res) => res.json())
+      .then((data) => setContacts(data.data));
+  }, []);
+
   return (
     <>
       <h1>Contacts</h1>
@@ -17,6 +27,15 @@ const Contacts = () => {
           </tr>
         </thead>
         <tbody>
+          {contacts.length > 0 &&
+            contacts.map((contact) => {
+              return (
+                <tr key={contact.id}>
+                  <td>{contact.id}</td>
+                  <td>{contact.firstName}</td>
+                </tr>
+              );
+            })}
           <tr>
             <td>1</td>
             <td>Will Smith</td>

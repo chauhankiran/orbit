@@ -1,4 +1,14 @@
+import { useEffect, useState } from "react";
+
 const Quotes = () => {
+  const [quotes, setQuotes] = useState([]);
+
+  useEffect(() => {
+    fetch("http://localhost:5000/quotes")
+      .then((res) => res.json())
+      .then((data) => setQuotes(data.data));
+  }, []);
+
   return (
     <>
       <h1>Quotes</h1>
@@ -16,6 +26,15 @@ const Quotes = () => {
           </tr>
         </thead>
         <tbody>
+          {quotes.length > 0 &&
+            quotes.map((quote) => {
+              return (
+                <tr key={quote.id}>
+                  <td>{quote.id}</td>
+                  <td>{quote.name}</td>
+                </tr>
+              );
+            })}
           <tr>
             <td>1</td>
             <td>Door replace</td>

@@ -1,4 +1,14 @@
+import { useEffect, useState } from "react";
+
 const Tasks = () => {
+  const [tasks, setTasks] = useState([]);
+
+  useEffect(() => {
+    fetch("http://localhost:5000/tasks")
+      .then((res) => res.json())
+      .then((data) => setTasks(data.data));
+  }, []);
+
   return (
     <>
       <h1>Tasks</h1>
@@ -13,6 +23,15 @@ const Tasks = () => {
           </tr>
         </thead>
         <tbody>
+          {tasks.length > 0 &&
+            tasks.map((task) => {
+              return (
+                <tr key={task.id}>
+                  <td>{task.id}</td>
+                  <td>{task.name}</td>
+                </tr>
+              );
+            })}
           <tr>
             <td>1</td>
             <td>Product Demo</td>

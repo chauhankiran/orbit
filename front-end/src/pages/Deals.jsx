@@ -1,4 +1,14 @@
+import { useEffect, useState } from "react";
+
 const Deals = () => {
+  const [deals, setDeals] = useState([]);
+
+  useEffect(() => {
+    fetch("http://localhost:5000/deals")
+      .then((res) => res.json())
+      .then((data) => setDeals(data.data));
+  }, []);
+
   return (
     <>
       <h1>Deals</h1>
@@ -16,6 +26,15 @@ const Deals = () => {
           </tr>
         </thead>
         <tbody>
+          {deals.length > 0 &&
+            deals.map((deal) => {
+              return (
+                <tr key={deal.id}>
+                  <td>{deal.id}</td>
+                  <td>{deal.name}</td>
+                </tr>
+              );
+            })}
           <tr>
             <td>1</td>
             <td>Door replace</td>

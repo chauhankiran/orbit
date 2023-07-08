@@ -1,4 +1,14 @@
+import { useEffect, useState } from "react";
+
 const Tickets = () => {
+  const [tickets, setTickets] = useState([]);
+
+  useEffect(() => {
+    fetch("http://localhost:5000/tickets")
+      .then((res) => res.json())
+      .then((data) => setTickets(data.data));
+  }, []);
+
   return (
     <>
       <h1>Tickets</h1>
@@ -16,6 +26,15 @@ const Tickets = () => {
           </tr>
         </thead>
         <tbody>
+          {tickets.length > 0 &&
+            tickets.map((ticket) => {
+              return (
+                <tr key={ticket.id}>
+                  <td>{ticket.id}</td>
+                  <td>{ticket.name}</td>
+                </tr>
+              );
+            })}
           <tr>
             <td>1</td>
             <td>Problem with close connection</td>

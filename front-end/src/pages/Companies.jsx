@@ -1,4 +1,14 @@
+import { useEffect, useState } from "react";
+
 const Companies = () => {
+  const [companies, setCompanies] = useState([]);
+
+  useEffect(() => {
+    fetch("http://localhost:5000/companies")
+      .then((res) => res.json())
+      .then((data) => setCompanies(data.data));
+  }, []);
+
   return (
     <>
       <h1>Companies</h1>
@@ -17,6 +27,15 @@ const Companies = () => {
           </tr>
         </thead>
         <tbody>
+          {companies.length > 0 &&
+            companies.map((company) => {
+              return (
+                <tr key={company.id}>
+                  <td>{company.id}</td>
+                  <td>{company.name}</td>
+                </tr>
+              );
+            })}
           <tr>
             <td>1</td>
             <td>Google, Inc.</td>

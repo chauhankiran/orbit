@@ -1,3 +1,4 @@
+const cors = require("cors");
 const express = require("express");
 const morgan = require("morgan");
 const mysql = require("mysql2/promise");
@@ -13,6 +14,7 @@ const db = mysql.createPool({
 });
 
 app.use(morgan("tiny"));
+app.use(cors({ origin: "http://localhost:3000" }));
 
 app.get("/", (req, res) => {
   res.json({ message: "hello, world" });
