@@ -32,6 +32,18 @@ app.get("/companies", async (req, res, next) => {
   }
 });
 
+app.get("/companies/:id", async (req, res, next) => {
+  const id = req.params.id;
+
+  try {
+    const [company] = await db.query("SELECT * FROM companies WHERE id = ?", [id]);
+
+    res.json({ data: company });
+  } catch (err) {
+    next(err);
+  }
+});
+
 app.post("/companies", async (req, res, next) => {
   const { name } = req.body;
 
@@ -50,6 +62,18 @@ app.get("/contacts", async (req, res, next) => {
     const [contacts] = await db.query("SELECT * FROM contacts");
 
     res.json({ data: contacts });
+  } catch (err) {
+    next(err);
+  }
+});
+
+app.get("/contacts/:id", async (req, res, next) => {
+  const id = req.params.id;
+
+  try {
+    const [contact] = await db.query("SELECT * FROM contacts WHERE id = ?", [id]);
+
+    res.json({ data: contact });
   } catch (err) {
     next(err);
   }
@@ -78,6 +102,18 @@ app.get("/deals", async (req, res, next) => {
   }
 });
 
+app.get("/deals/:id", async (req, res, next) => {
+  const id = req.params.id;
+
+  try {
+    const [deal] = await db.query("SELECT * FROM deals WHERE id = ?", [id]);
+
+    res.json({ data: deal });
+  } catch (err) {
+    next(err);
+  }
+});
+
 app.post("/deals", async (req, res, next) => {
   const { name } = req.body;
 
@@ -96,6 +132,18 @@ app.get("/quotes", async (req, res, next) => {
     const [quotes] = await db.query("SELECT * FROM quotes");
 
     res.json({ data: quotes });
+  } catch (err) {
+    next(err);
+  }
+});
+
+app.get("/quotes/:id", async (req, res, next) => {
+  const id = req.params.id;
+
+  try {
+    const [quote] = await db.query("SELECT * FROM quotes WHERE id = ?", [id]);
+
+    res.json({ data: quote });
   } catch (err) {
     next(err);
   }
@@ -124,6 +172,18 @@ app.get("/tickets", async (req, res, next) => {
   }
 });
 
+app.get("/tickets/:id", async (req, res, next) => {
+  const id = req.params.id;
+
+  try {
+    const [ticket] = await db.query("SELECT * FROM tickets WHERE id = ?", [id]);
+
+    res.json({ data: ticket });
+  } catch (err) {
+    next(err);
+  }
+});
+
 app.post("/tickets", async (req, res, next) => {
   const { name } = req.body;
 
@@ -142,6 +202,18 @@ app.get("/tasks", async (req, res, next) => {
     const [tasks] = await db.query("SELECT * FROM tasks");
 
     res.json({ data: tasks });
+  } catch (err) {
+    next(err);
+  }
+});
+
+app.get("/tasks/:id", async (req, res, next) => {
+  const id = req.params.id;
+
+  try {
+    const [task] = await db.query("SELECT * FROM tasks WHERE id = ?", [id]);
+
+    res.json({ data: task });
   } catch (err) {
     next(err);
   }
