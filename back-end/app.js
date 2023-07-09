@@ -38,7 +38,7 @@ app.get("/companies/:id", async (req, res, next) => {
   try {
     const [company] = await db.query("SELECT * FROM companies WHERE id = ?", [id]);
 
-    res.json({ data: company });
+    res.json({ data: company[0] });
   } catch (err) {
     next(err);
   }
@@ -73,7 +73,7 @@ app.get("/contacts/:id", async (req, res, next) => {
   try {
     const [contact] = await db.query("SELECT * FROM contacts WHERE id = ?", [id]);
 
-    res.json({ data: contact });
+    res.json({ data: contact[0] });
   } catch (err) {
     next(err);
   }
@@ -108,7 +108,7 @@ app.get("/deals/:id", async (req, res, next) => {
   try {
     const [deal] = await db.query("SELECT * FROM deals WHERE id = ?", [id]);
 
-    res.json({ data: deal });
+    res.json({ data: deal[0] });
   } catch (err) {
     next(err);
   }
@@ -143,7 +143,7 @@ app.get("/quotes/:id", async (req, res, next) => {
   try {
     const [quote] = await db.query("SELECT * FROM quotes WHERE id = ?", [id]);
 
-    res.json({ data: quote });
+    res.json({ data: quote[0] });
   } catch (err) {
     next(err);
   }
@@ -178,7 +178,7 @@ app.get("/tickets/:id", async (req, res, next) => {
   try {
     const [ticket] = await db.query("SELECT * FROM tickets WHERE id = ?", [id]);
 
-    res.json({ data: ticket });
+    res.json({ data: ticket[0] });
   } catch (err) {
     next(err);
   }
@@ -213,7 +213,7 @@ app.get("/tasks/:id", async (req, res, next) => {
   try {
     const [task] = await db.query("SELECT * FROM tasks WHERE id = ?", [id]);
 
-    res.json({ data: task });
+    res.json({ data: task[0] });
   } catch (err) {
     next(err);
   }
