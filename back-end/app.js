@@ -56,6 +56,18 @@ app.post("/companies", async (req, res, next) => {
   }
 });
 
+app.delete("/companies/:id", async (req, res, next) => {
+  const id = req.params.id;
+
+  try {
+    await db.query("DELETE FROM companies WHERE id = ?", [id]);
+
+    res.json({ data: id });
+  } catch (err) {
+    next(err);
+  }
+});
+
 // Contacts
 app.get("/contacts", async (req, res, next) => {
   try {
@@ -86,6 +98,18 @@ app.post("/contacts", async (req, res, next) => {
     const [result] = await db.query("INSERT INTO contacts (firstName) VALUES (?)", [firstName]);
 
     res.json({ data: result.insertId });
+  } catch (err) {
+    next(err);
+  }
+});
+
+app.delete("/contacts/:id", async (req, res, next) => {
+  const id = req.params.id;
+
+  try {
+    await db.query("DELETE FROM contacts WHERE id = ?", [id]);
+
+    res.json({ data: id });
   } catch (err) {
     next(err);
   }
@@ -126,6 +150,18 @@ app.post("/deals", async (req, res, next) => {
   }
 });
 
+app.delete("/deals/:id", async (req, res, next) => {
+  const id = req.params.id;
+
+  try {
+    await db.query("DELETE FROM deals WHERE id = ?", [id]);
+
+    res.json({ data: id });
+  } catch (err) {
+    next(err);
+  }
+});
+
 // Quotes
 app.get("/quotes", async (req, res, next) => {
   try {
@@ -156,6 +192,18 @@ app.post("/quotes", async (req, res, next) => {
     const [result] = await db.query("INSERT INTO quotes (name) VALUES (?)", [name]);
 
     res.json({ data: result.insertId });
+  } catch (err) {
+    next(err);
+  }
+});
+
+app.delete("/quotes/:id", async (req, res, next) => {
+  const id = req.params.id;
+
+  try {
+    await db.query("DELETE FROM quotes WHERE id = ?", [id]);
+
+    res.json({ data: id });
   } catch (err) {
     next(err);
   }
@@ -196,6 +244,18 @@ app.post("/tickets", async (req, res, next) => {
   }
 });
 
+app.delete("/tickets/:id", async (req, res, next) => {
+  const id = req.params.id;
+
+  try {
+    await db.query("DELETE FROM tickets WHERE id = ?", [id]);
+
+    res.json({ data: id });
+  } catch (err) {
+    next(err);
+  }
+});
+
 // Tasks
 app.get("/tasks", async (req, res, next) => {
   try {
@@ -226,6 +286,18 @@ app.post("/tasks", async (req, res, next) => {
     const [result] = await db.query("INSERT INTO tasks (name) VALUES (?)", [name]);
 
     res.json({ data: result.insertId });
+  } catch (err) {
+    next(err);
+  }
+});
+
+app.delete("/tasks/:id", async (req, res, next) => {
+  const id = req.params.id;
+
+  try {
+    await db.query("DELETE FROM tasks WHERE id = ?", [id]);
+
+    res.json({ data: id });
   } catch (err) {
     next(err);
   }
