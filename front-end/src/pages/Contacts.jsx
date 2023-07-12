@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Contacts = () => {
   const navigate = useNavigate();
@@ -38,8 +38,12 @@ const Contacts = () => {
             contacts.map((contact) => {
               return (
                 <tr key={contact.id}>
-                  <td>{contact.id}</td>
-                  <td>{contact.firstName}</td>
+                  <td>
+                    <Link to={`/contacts/${contact.id}`}>{contact.id}</Link>
+                  </td>
+                  <td>
+                    <Link to={`/contacts/${contact.id}`}>{contact.firstName}</Link>
+                  </td>
                 </tr>
               );
             })}

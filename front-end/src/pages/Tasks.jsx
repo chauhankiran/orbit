@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Tasks = () => {
   const navigate = useNavigate();
@@ -34,8 +34,12 @@ const Tasks = () => {
             tasks.map((task) => {
               return (
                 <tr key={task.id}>
-                  <td>{task.id}</td>
-                  <td>{task.name}</td>
+                  <td>
+                    <Link to={`/tasks/${task.id}`}>{task.id}</Link>
+                  </td>
+                  <td>
+                    <Link to={`/tasks/${task.id}`}>{task.name}</Link>
+                  </td>
                 </tr>
               );
             })}

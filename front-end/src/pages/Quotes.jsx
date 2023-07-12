@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Quotes = () => {
   const navigate = useNavigate();
@@ -37,8 +37,12 @@ const Quotes = () => {
             quotes.map((quote) => {
               return (
                 <tr key={quote.id}>
-                  <td>{quote.id}</td>
-                  <td>{quote.name}</td>
+                  <td>
+                    <Link to={`/quotes/${quote.id}`}>{quote.id}</Link>
+                  </td>
+                  <td>
+                    <Link to={`/quotes/${quote.id}`}>{quote.name}</Link>
+                  </td>
                 </tr>
               );
             })}

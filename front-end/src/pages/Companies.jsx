@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Companies = () => {
   const navigate = useNavigate();
@@ -38,8 +38,12 @@ const Companies = () => {
             companies.map((company) => {
               return (
                 <tr key={company.id}>
-                  <td>{company.id}</td>
-                  <td>{company.name}</td>
+                  <td>
+                    <Link to={`/companies/${company.id}`}>{company.id}</Link>
+                  </td>
+                  <td>
+                    <Link to={`/companies/${company.id}`}>{company.name}</Link>
+                  </td>
                 </tr>
               );
             })}

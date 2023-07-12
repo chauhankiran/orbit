@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Tickets = () => {
   const navigate = useNavigate();
@@ -37,8 +37,12 @@ const Tickets = () => {
             tickets.map((ticket) => {
               return (
                 <tr key={ticket.id}>
-                  <td>{ticket.id}</td>
-                  <td>{ticket.name}</td>
+                  <td>
+                    <Link to={`/tickets/${ticket.id}`}>{ticket.id}</Link>
+                  </td>
+                  <td>
+                    <Link to={`/tickets/${ticket.id}`}>{ticket.name}</Link>
+                  </td>
                 </tr>
               );
             })}
